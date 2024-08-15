@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "sourceMap": true,
+        "outDir": "dist",
+        "esModuleInterop": true,
+        "declaration": true, // 生成.d.ts文件
+    },
+    // "include": ["src/**/*"], // 哪些文件需要被typescript识别
+}
