@@ -17,15 +17,17 @@ var combine = function(n, k) {
     function backtracking(deep, start) {
         if (deep < 1) {
             result.push([...permutation])
-            return
-        } else {
-            for(let i = start; i < list.length; i++) {
-                let ele = list[i]
-                permutation.push(ele)
-                backtracking(deep - 1, i + 1)
-                permutation.pop()
-            }
+            return permutation.pop()
         }
+        if (deep > (list.length - start)) {
+            return permutation.pop()
+        }
+        for(let i = start; i < list.length; i++) {
+            let ele = list[i]
+            permutation.push(ele)
+            backtracking(deep - 1, i + 1)
+        }
+        return permutation.pop()
     }
     for (let i = 1; i <= n; i++) {
         list.push(i)
