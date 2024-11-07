@@ -72,17 +72,15 @@ var solveNQueens = function(n) {
         if (positions.length === n) {
             return rouds.push(positions.slice())
         } else {
-            for(let i = row; i < n; i++) {
-                for(let j = 0; j < n; j++) {
-                    if (canAttack(i, j)) {
-                        continue
-                    }
-                    chessboard[i][j] = 'Q'
-                    positions.push(chessboard[i].join(''))
-                    place(i + 1)
-                    chessboard[i][j] = '.'
-                    positions.pop()
+            for(let j = 0; j < n; j++) {
+                if (canAttack(row, j)) {
+                    continue
                 }
+                chessboard[row][j] = 'Q'
+                positions.push(chessboard[row].join(''))
+                place(row + 1)
+                chessboard[row][j] = '.'
+                positions.pop()
             }
         }
     }
