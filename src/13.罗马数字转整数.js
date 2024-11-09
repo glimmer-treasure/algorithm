@@ -10,7 +10,7 @@
  * @return {number}
  */
 var romanToInt = function(s) {
-    let nums = []
+    let count = 0
     let index = 0
     let len = s.length
     const next = () => index += 1
@@ -19,12 +19,12 @@ var romanToInt = function(s) {
         let pre = peek()
         if (pre === 'V') {
             next()
-            nums.push(4)
+            count += 4
         } else if (pre === 'X') {
             next()
-            nums.push(9)
+            count += 9
         } else {
-            nums.push(1)
+            count += 1
         }
         next()
     }
@@ -32,12 +32,12 @@ var romanToInt = function(s) {
         let pre = peek()
         if (pre === 'L') {
             next()
-            nums.push(40)
+            count += 40
         } else if (pre === 'C') {
             next()
-            nums.push(90)
+            count += 90
         } else {
-            nums.push(10)
+            count += 10
         }
         next()
     }
@@ -45,12 +45,12 @@ var romanToInt = function(s) {
         let pre = peek()
         if (pre === 'D') {
             next()
-            nums.push(400)
+            count += 400
         } else if (pre === 'M') {
             next()
-            nums.push(900)
+            count += 900
         } else {
-            nums.push(100)
+            count += 100
         }
         next()
     }
@@ -61,30 +61,30 @@ var romanToInt = function(s) {
                 parseI();
                 break
             case 'V':
-                nums.push(5)
+                count += 5
                 next()
                 break
             case 'X':
                 parseX();
                 break
             case 'L':
-                nums.push(50)
+                count += 50
                 next()
                 break
             case 'C':
                 parseC();
                 break
             case 'D':
-                nums.push(500)
+                count += 500
                 next()
                 break
             case 'M':
-                nums.push(1000)
+                count += 1000
                 next()
                 break
         }
     }
-    return nums.reduce((pre, cur) => pre + cur, 0)
+    return count
 };
 // @lc code=end
 
