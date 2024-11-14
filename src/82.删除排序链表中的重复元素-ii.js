@@ -22,17 +22,16 @@ var deleteDuplicates = function(head) {
     let pre = dummy
     while(cur) {
         let next = cur.next
-        if (next && pre.val !== cur.val && cur.val === next.val) {
-            while(next && cur.val === next.val) {
-                cur = next
-                next = cur.next
-            }
-            pre.next = next
+        while (pre.val !== cur.val && next && cur.val === next.val) {
             cur = next
+            next = cur.next
+        }
+        if (pre.next !== cur) {
+            pre.next = next
         } else {
             pre = cur
-            cur = next
         }
+        cur = next
     }
     return dummy.next
 };
