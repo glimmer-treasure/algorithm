@@ -19,22 +19,21 @@
  * @return {boolean}
  */
 var hasPathSum = function (root, targetSum) {
-    const _hasPathSum = (node, targetSum) => {
-        if (!node.left && !node.right) {
-            return node.val === targetSum
-        }
-        if (node.left && node.right) {
-            return _hasPathSum(node.left, targetSum - node.val) || _hasPathSum(node.right, targetSum - node.val)
-        }
-        if (!node.left) {
-            return _hasPathSum(node.right, targetSum - node.val)
-        }
-        if (!node.right) {
-            return _hasPathSum(node.left, targetSum - node.val)
-        }
-
+    if (!root) {
+        return false
     }
-    return root ? _hasPathSum(root, targetSum) : false
+    if (!root.left && !root.right) {
+        return root.val === targetSum
+    }
+    if (root.left && root.right) {
+        return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val)
+    }
+    if (!root.left) {
+        return hasPathSum(root.right, targetSum - root.val)
+    }
+    if (!root.right) {
+        return hasPathSum(root.left, targetSum - root.val)
+    }
 };
 // @lc code=end
 
