@@ -24,20 +24,19 @@ var connect = function (root) {
         return root
     }
     let queue = [root]
-    let queue2 = []
     const travel = () => {
         while (queue.length) {
-            for (let i = 0; i < queue.length; i++) {
-                queue[i].next = queue[i + 1] ? queue[i + 1] : null
+            let nextIndex = queue.length
+            for (let i = 0; i < nextIndex; i++) {
+                queue[i].next = (i + 1) < nextIndex ? queue[i + 1] : null
                 if (queue[i].left) {
-                    queue2.push(queue[i].left)
+                    queue.push(queue[i].left)
                 }
                 if (queue[i].right) {
-                    queue2.push(queue[i].right)
+                    queue.push(queue[i].right)
                 }
             }
-            queue = queue2
-            queue2 = []
+            queue = queue.slice(nextIndex)
         }
     }
     travel()
