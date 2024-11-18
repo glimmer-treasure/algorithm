@@ -16,6 +16,7 @@ var reverseBits = function (n) {
         let bit = (n >> i) & 1
         result |= bit
     }
+    // 无符号右移
     return result >>>= 0;
 };
 // @lc code=end
